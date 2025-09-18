@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://i.postimg.cc/15jvrm17/Whats-App-Image-2025-09-18-at-1-52-26-PM.jpg'); /* Background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the image */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .love-letter-box {
+            display: none; /* Initially hidden */
+            background-color: rgba(255, 255, 255, 0.8); /* White background with transparency */
+            color: #000; /* Black text */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            max-width: 600px; /* Limit width for readability */
+            margin: 20px auto; /* Center the box */
+        }
+
+        .reveal-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background-color: rgba(106, 90, 205, 0.8); /* Slate Blue with transparency */
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .reveal-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Your Love Letter</h1>
+    <button class="reveal-button" onclick="revealLetter()">Should I reveal the words of my heart?</button>
+
+    <div class="love-letter-box" id="loveLetterBox">
+        <p id="loveLetterText">Happy Birthday, my love 💖,<br>
+        
+"Crazy to think this is the first birthday of yours I get to celebrate as your girlfriend — out of all the firsts we’ve shared, this one feels extra special… and I already know it’s just the start of so many more we’ll get to do (so get used to me stealing your cake (talking abt ur cake) every year 😏🎂)."
+
+I honestly don’t even know where to start because there are so many reasons why I want to spend my whole life with you. A day without talking to you feels incomplete, like something is missing. When we laugh together and I see your cute smile, I feel so much love for you that I want to carry it with me forever.
+
+You’ve always treated me so kindly, even before we were together. I still remember those little things — like waiting for me early in the morning in the freezing cold, or going from shop to shop just because I mentioned I liked Harry Potter and Kinder Joy. I still have those tiny toys, and whenever I see them, I think of you and smile. And on top of all that, you tolerate my endless mood swings and lame jokes (which, honestly, deserves a padmabhushan or sm like tht😂).
+
+I feel so comfortable when I’m with you. When we hug, it’s like the world stops for a moment. Even in those awkward eye contacts where I was panicking inside, there was always this strange comfort. With you, I can just be myself, and I know you’ll still love me. That means everything. And honestly, I love your touch — it makes me feel safe, warm, and cared for. Your kisses give me butterflies in my stomach every single time, no matter what. You genuinely feel like home to me (and by home, I don’t mean some Pinterest-y aesthetic house… I mean the kind of home where we’re both messy, ordering food when we’re too lazy to cook, fighting over which side of the bed is whose, but still laughing together through all of it).
+
+I don’t know what the future looks like or what I’ll do with my life, but one thing I know for sure is that I want you in it. I want us to have our own little house one day, a cozy space filled with love, chaos, and inside jokes. I dream of us building a family together, and I already know I want a daughter named *Aradhya Tyagi* — our mini-us causing chaos in the world, with you being the funniest, most protective (and probably overdramatic) girl dad ever.
+
+There are so many things I still want to experience with you — going on movie dates, traveling together, shopping, riding on a bike with my hair flying around (yes, cringe I know 😭), cooking together, going on picnic dates… just everything. All the little things, all the big things — I want them with you.
+
+So today on your birthday, I just want you to know how much I love you, how much you mean to me, and how excited I am for our future together. You’re not just my boyfriend — you’re my soulmate, my forever person. I can’t wait to grow old with you, hand in hand, still laughing at the same silly things.
+
+Happy Birthday, baby ❤️
+Forever yours (and forever annoying you),
+Aanu
+
+P.S. You’re officially not allowed to age without me — sorry, those are the rules.
+        </p>
+        
+    </div>
+
+    <audio id="loveLetterMusic" src="2.mp3" preload="auto"></audio>
+
+    <script>
+        function revealLetter() {
+            // Reveal the love letter box
+            document.getElementById('loveLetterBox').style.display = 'block';
+            // Hide the button
+            document.querySelector('.reveal-button').style.display = 'none';
+            // Play the music
+            var music = document.getElementById('loveLetterMusic');
+            music.play();
+        }
+    </script>
+
+</body>
+</html>

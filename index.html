@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #welcomeMessage {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        #quizSection {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            color: #333;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        h2, h3 {
+            color: #d50000;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
+        }
+
+        .quiz-button {
+            background-color: #ff6f61;
+            color: white;
+        }
+
+        .music-button {
+            background-color: #6a5acd;
+            color: white;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="text"], input[type="radio"] {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: calc(100% - 22px);
+            transition: border-color 0.3s;
+        }
+
+        input[type="radio"] {
+            width: auto;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #fff;
+        }
+
+        #megaQuestion {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            color: #333;
+        }
+
+        .image-option {
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .image-option:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="welcomeMessage">aapka valentine Surprise</div>
+    <button class="quiz-button" id="startQuizButton" onclick="startQuiz()">sawal jawab shuru kree</button>
+    <button class="music-button" id="playMusicButton" onclick="playMusic()">gana baja du cutu ji</button>
+
+    <audio id="valentineMusic" src="1.mp3" preload="auto" loop></audio>
+    <div id="quizSection">
+        <h2>Birthday Quiz</h2>
+        <form id="quizForm" onsubmit="return checkAnswers()">
+            <h3> How many times did we kiss on the first wali park date? </h3>
+            <input type="radio" name="q1" value=" 3 "> 3 <br>
+            <input type="radio" name="q1" value=" 69 "> 69 <br>
+            <input type="radio" name="q1" value=" 143 "> 143 <br>
+            <input type="radio" name="q1" value=" 4 "> 4 <br>
+
+            <h3> What was the first handmade gift given to you? </h3>
+            <input type="radio" name="q2" value=" Card "> Card <br>
+            <input type="radio" name="q2" value=" Origami heart "> Origami heart <br>
+            <input type="radio" name="q2" value=" Our Potrait "> Our potrait <br>
+            <input type="radio" name="q2" value=" Bracelet "> A Bracelet <br>
+
+            <button type="submit">Lock kiya jaye</button>
+            <button type="button" onclick="resetQuiz()">Reset kr du</button>
+        </form>
+    </div>
+
+    <div id="readyMessage" style="display: none;">
+        <h2>Sabse hard question ke liye ready ?</h2>
+        <button class="quiz-button" id="yesButton" onclick="showMegaQuestion()">Yes</button>
+    </div>
+
+    <div id="megaQuestion">
+        <h2>Inme se, who is my cutu???</h2>
+        <p>dono me se choose kro</p>
+        <div>
+            <!-- Replace with your direct .jpg/.png links -->
+            <img src="https://i.postimg.cc/hjrSJTnz/Whats-App-Image-2025-09-18-at-1-35-41-PM.jpg" alt="Image 1" class="image-option" width="150" onclick="selectImage('Option 1')">
+            <img src="https://i.postimg.cc/NFD5wZFn/Whats-App-Image-2025-09-18-at-1-35-41-PM-1.jpg" alt="Image 2" class="image-option" width="150" onclick="selectImage('Option 2')">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; ohmigod apne to mere dil mei bada sa ghar bana liya hai</p>
+    </footer>
+
+    <script>
+        function startQuiz() {
+            document.getElementById('welcomeMessage').style.display = 'none';
+            document.getElementById('startQuizButton').style.display = 'none';
+            document.getElementById('playMusicButton').style.display = 'none';
+            document.getElementById('quizSection').style.display = 'block';
+        }
+
+        function checkAnswers() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            let score = 0;
+
+            if (q1 && q1.value === ' 3 ') score++;
+            if (q2 && q2.value === ' Origami heart ') score++;
+
+            if (score === 2) {
+                document.getElementById('quizSection').style.display = 'none';
+                document.getElementById('readyMessage').style.display = 'block';
+            } else {
+                alert("kya yaar sahi jawab nhi pata aapko");
+            }
+
+            return false;
+        }
+
+        function resetQuiz() {
+            document.getElementById('quizForm').reset();
+        }
+
+        function showMegaQuestion() {
+            document.getElementById('readyMessage').style.display = 'none';
+            document.getElementById('megaQuestion').style.display = 'block';
+        }
+
+        function selectImage(option) {
+            if (option === 'Option 1') {
+                alert("You selected: " + option + ". are sahi jawab!!!!");
+                setTimeout(function() {
+                    window.location.href = 'letter.html';
+                }, 1000);
+            } else {
+                alert("You selected: " + option + " mere bache aur apne bache mei farak ni pata hahahahah");
+            }
+        }
+
+        function playMusic() {
+            var music = document.getElementById('valentineMusic');
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+    </script>
+</body>
+</html>
